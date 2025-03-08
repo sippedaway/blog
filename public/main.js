@@ -1,3 +1,15 @@
+function log(message, inline = false) {
+    const extraStyle = inline ? "" : "display:inline-block; padding: 10px;";
+    const style = "color: white; background: black; font-family: monospace; font-size: 20px; " + extraStyle;
+    console.log(`%c${message}`, style);
+  }
+
+log("hey kitten");
+log("looking through my code??");
+log("go check out the repository:");
+console.log('%chttps://www.github.com/sippedaway/sipped.org', "font-size: 20px;");
+log('have fun :) email me: hello@sipped.org');
+
 document.addEventListener('DOMContentLoaded', () => {
   if (document.body.id === 'home') {
     loadPosts();
