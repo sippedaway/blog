@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>home · sipped/blog</title>
+
+  <!-- Pretty much useless SEO no one cares about -->
+  <meta name="description" content="sipped's blog with reviews, projects, sneak peeks and more!">
+  <meta name="keywords" content="blog, developer, webdev, html, css, javascript, reviews, projects, sneak peeks">
+  <meta name="author" content="sippedaway">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="sipped/blog">
+  <meta property="og:description" content="sipped's blog with reviews, projects, sneak peeks and more!">
+  <meta property="og:image" content="https://raw.githubusercontent.com/sippedaway/blog/refs/heads/main/favicon.png?token=GHSAT0AAAAAAC7Y2M2I26NHZWJ5ZPLCCEMUZ6MMX3A">
+  <meta property="og:url" content="https://sipped.org/blog">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="sipped/blog">
+  <meta property="og:locale" content="en_US">
+
+  <link rel="icon" href="favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body id="home">
+
+  <div id="notification-bar">
+    <i class="fas fa-info-circle"></i>
+    <span>Get early access, talk, and get exclusive news on my <a href="https://ko-fi.com" target="_blank">Ko-fi page</a>!</span>
+    <button id="close-notification">X</button>
+  </div>
+  <main id="posts-container">
+  </main>
+  <div id="popup-overlay" class="popup-overlay hidden"></div>
+  <div id="options-popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close">&times;</span>
+      <h2>Theme</h2>
+      <p style="margin:0;">Choose one of the theme presets:</p>
+      <div class="theme-buttons">
+        <button class="theme-button" data-theme="basic-light">Basic Light</button>
+        <button class="theme-button" data-theme="basic-dark">Basic Dark</button>
+        <button class="theme-button" data-theme="midnight">Midnight</button>
+        <button class="theme-button" data-theme="earth">Earth</button>
+        <button class="theme-button" data-theme="soft">Soft</button>
+      </div>
+      <hr style="width: 100%; border: 1px solid var(--grayed-out)">
+      <p style="margin:0;">Or create a custom theme:</p>
+      <label for="primary-color">Primary Color:</label>
+      <input type="color" id="primary-color" name="primary-color" value="#007bff">
+      <label for="background-color">Background Color:</label>
+      <input type="color" id="background-color" name="background-color" value="#f9f9f9">
+      <label for="text-color">Text Color:</label>
+      <input type="color" id="text-color" name="text-color" value="#333">
+      <label for="gray-color">Gray Color:</label>
+      <input type="color" id="gray-color" name="gray-color" value="#f0f0f0">
+      <button id="save-colors">Apply custom theme</button>
+    </div>
+  </div>
+  <button id="back-button" onclick="window.open('https://gtihub.com/sippedaway/blog', '_blank')"><i class="fas fa-external-link" style="margin-right: 5px;"></i>GitHub repository!</button>
+  <script src="main.js"></script>
+  <script src="header.js"></script>
+</body>
+</html>
