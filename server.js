@@ -11,11 +11,11 @@ const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
+app.get('/blog', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/:id', (req, res) => {
+app.get('/blog/:id', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'post.html'));
 });
 app.get('/api/posts', async (req, res) => {
