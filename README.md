@@ -26,6 +26,7 @@ Made by sipped in one week in March 2025. Uses pure html/css/js + the [Contentfu
 - Get early news and updates by supporting me with [Ko-fi](https://ko-fi.com/sipped)
 ### 1.1 - Released
 - Added views counter using my own [Counter-API](https://github.com/sippedaway/Counter-API) to each blog post
+- Hyperlinks are now in the color of the theme's "primary color"
 ### 1.0
 - Base release
 
