@@ -9,6 +9,10 @@
   transition: all 0.5s ease;
 }
 
+a {
+  color: var(--primary-color);
+}
+
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
