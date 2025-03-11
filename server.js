@@ -7,6 +7,7 @@ const PORT = 3000;
 
 const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
 const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
+const COUNTERAPI_AUTHKEY = process.env.COUNTERAPI_AUTHKEY;
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -18,6 +19,25 @@ app.get('/', (req, res) => {
 app.get('/:id', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'post.html'));
 });
+
+
+app.get('/api/views/:postId', async (req, res) => {
+  const postId = req.params.postId;
+  const apiUrl = `https://counter.sipped.org/punch/sippedblog/${COUNTERAPI_AUTHKEY}/${postId}`;
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    res.json(data);
+  } catch (err) {
+    console.error('Ersror fetching view count:', err.message);
+    res.status(500).json({ 
+      error: 'Error fetching view count',
+      details: err.message,
+      count: 0
+    });
+  }
+});
+
 app.get('/api/posts', async (req, res) => {
   const apiUrl = `https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}/entries?access_token=${CONTENTFUL_ACCESS_TOKEN}&content_type=post`;
   try {
@@ -32,7 +52,7 @@ app.get('/api/posts', async (req, res) => {
 
 app.get('/api/posts/:postId', async (req, res) => {
   const postId = req.params.postId;
-  const apiUrl = `https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}/entries/${postId}?access_token=${CONTENTFUL_ACCESS_TOKEN}&include=2`;
+  const apiUrl = `https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}/entries/${postId}?access_token=${CONTENTFUL_ACCESS_TOKEN}&include=3`;
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();

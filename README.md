@@ -22,9 +22,11 @@ A personal blog page created entirely with vanilla HTML/CSS/JS + [Contentful](ht
 Made by sipped in one week in March 2025. Uses pure html/css/js + the [Contentful](https://www.contentful.com) API for fetching and posting posts. Currently hosted with Vercel under the domain [blog.sipped.org](https://blog.sipped.org/). Or, access it with: sipped.org/blog
 
 ## Version
-### 1.1 - Coming soon!
+### 1.2 - Coming soon!
 - Get early news and updates by supporting me with [Ko-fi](https://ko-fi.com/sipped)
-### 1.0 - Released
+### 1.1 - Released
+- Added views counter using my own [Counter-API](https://github.com/sippedaway/Counter-API) to each blog post
+### 1.0
 - Base release
 
 ## Found issues? Bugs? Feedback? Questions?

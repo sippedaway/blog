@@ -308,6 +308,12 @@ main {
   color: var(--primary-color)
 }
 
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 3%;
+}
+
 .summary-dropdown {
   margin: 1rem 0;
 }

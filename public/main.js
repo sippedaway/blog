@@ -1,15 +1,3 @@
-function log(message, inline = false) {
-    const extraStyle = inline ? "" : "display:inline-block; padding: 10px;";
-    const style = "color: white; background: black; font-family: monospace; font-size: 20px; " + extraStyle;
-    console.log(`%c${message}`, style);
-  }
-
-log("hey kitten");
-log("looking through my code??");
-log("go check out the repository:");
-console.log('%chttps://www.github.com/sippedaway/sipped.org', "font-size: 20px;");
-log('have fun :) email me: hello@sipped.org');
-
 document.addEventListener('DOMContentLoaded', () => {
   if (document.body.id === 'home') {
     loadPosts();
@@ -132,6 +120,19 @@ function loadPosts() {
     .catch(err => console.error('Error loading posts:', err));
 }
 
+async function loadPostViews(postId) {
+  try {
+    const response = await fetch(`/api/views/${postId}`);
+    const data = await response.json();
+    const viewsDiv = document.querySelector('.views');
+    if (viewsDiv && data.count) {
+      viewsDiv.innerHTML = `<i class="fas fa-eye"></i> ${data.count} ${data.count === 1 ? 'view' : 'views'}`;
+    }
+  } catch (err) {
+    console.error('Error fetching view count:', err);
+  }
+}
+
 function loadSinglePost() {
   const postId = window.location.pathname.split('/').pop();
   if (!postId) {
@@ -157,7 +158,10 @@ function loadSinglePost() {
       container.innerHTML = `
         ${assetId ? `<span class="asset-placeholder asset-placeholder-header" data-asset-id="${assetId}">Loading media...</span>` : ''}
         <h2>${post.fields.title}</h2>
-        <small>${formatDate(post.fields.date)}</small>
+        <div class="post-header">
+          <small>${formatDate(post.fields.date)}</small>
+          <div class="views"><i class="fas fa-eye"></i> Loading views...</div>
+        </div>
         ${post.fields.summary ? `
           <div class="summary-dropdown">
             <button class="summary-button" onclick="toggleSummary(this);">
@@ -170,6 +174,7 @@ function loadSinglePost() {
         <div>${postContentHtml}</div>
       `;
       loadEmbeddedAssets();
+      loadPostViews(postId);
     })
     .catch(err => console.error('Error loading post:', err));
 }
